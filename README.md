@@ -2,6 +2,8 @@
 
 Une petite île posée sur ton écran Windows. Elle te montre ce que font tes agents IA, te laisse répondre à leurs demandes sans changer de fenêtre, affiche tes messages et pilote ta musique. Mochi, une petite mascotte, y vit et réagit à ce qui se passe.
 
+![îlot en action : Mochi salue, un agent termine, une permission, un message, la musique et une session en direct](media/ilot-apercu.gif)
+
 ## Ce qu'elle fait
 
 - **Agents IA** : Claude Code, Gemini CLI, Codex, Copilot CLI, OpenCode et d'autres. Un point par IA, ce que chacune modifie (`+12 −3`), et une session en direct avec ses étapes et son diff.
