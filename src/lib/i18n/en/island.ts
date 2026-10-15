@@ -1,0 +1,135 @@
+// island, in English: the same keys as ../fr/island.ts.
+
+import type { Catalog } from "../fr";
+
+const plural = (count: number, word: string): string => `${count} ${word}${count === 1 ? "" : "s"}`;
+
+export const island: Catalog["island"] = {
+  region: "Îlot",
+  regionPill: "Îlot. Click to open, drag to move, Alt and arrow keys on the keyboard",
+  sources: "Source",
+  keyEscape: "Esc",
+  keyEnter: "Enter",
+  change: {
+    title: "See the change",
+    label: (file, added, removed) => `See the change to ${file}: ${plural(added, "line")} added, ${removed} removed`,
+  },
+  menu: {
+    label: "Quick menu",
+    quiet: "Do not disturb",
+    focus: (minutes) => `Focus ${minutes} min`,
+    stopFocus: (left) => `Stop focus · ${left}`,
+    recenter: "Recenter the island",
+    replayIntro: "Replay the intro",
+    settings: "Settings",
+  },
+  pill: {
+    suspended: "Agents paused",
+    working: (count) => `${plural(count, "agent")} working`,
+    none: "No agent working",
+    paused: "Paused",
+    agents: (count) => (count === 1 ? "agent" : "agents"),
+    idle: "Idle",
+    unread: (count) => `${count} unread message${count === 1 ? "" : "s"}`,
+  },
+  event: {
+    finished: (tool) => `${tool} is done`,
+    agents: "Agents",
+    finishedMany: (count) => `${count} agents are done`,
+    failed: (tool) => `${tool} failed`,
+    failure: (project, detail) => `${project}: ${detail}`,
+    view: "View",
+    viewError: "View error",
+  },
+  drop: {
+    title: "Drop the file here",
+    sub: "Mochi copies its path for your agent",
+  },
+  file: {
+    sub: "Path copied for your agent. Mochi only opens it if you ask him about it.",
+    ask: "Ask Mochi",
+    mail: "Attach to an email",
+    later: "Later",
+  },
+  mochi: {
+    dizzy: (name) => `${name} is dizzy`,
+    out: (name) => `${name} leaves the island`,
+    tip: (name) => `${name}: click, pull him down, or right-click for his wardrobe`,
+  },
+  message: {
+    now: (app) => `${app}, just now`,
+    masked: "New message (content hidden)",
+    reply: "Reply",
+    open: "Open",
+    read: "Mark as read",
+    ignore: "Dismiss",
+  },
+  pastille: {
+    said: (name, line) => `${name}: ${line}`,
+  },
+  voice: {
+    dot: "The mic is listening for “OK Mochi”. Turn the mic off",
+    dotTip: "The mic is listening for “OK Mochi”. Click to turn it off",
+    now: "OK Mochi, just now",
+    quote: (text) => `“${text}”`,
+    lead: "With your key, Claude only gets your request and this:",
+    sent: "What will be sent to Claude",
+    send: "Send to Claude",
+    cancel: "Cancel",
+    thinking: "Claude is thinking…",
+    repeat: "Repeat",
+    close: "Close",
+  },
+  wardrobe: {
+    dressed: (name) => `${name} in his outfit`,
+    title: "Wardrobe",
+    close: "Close the wardrobe (Esc)",
+    closeTip: "Close (Esc)",
+  },
+  request: {
+    where: (tool, folder) => `${tool} in ${folder}`,
+    late: "Too late to answer here: answer in the agent's terminal.",
+    terminal: "Answer in the terminal",
+  },
+  permission: {
+    dialog: "Permission request",
+    riskHigh: "High risk",
+    riskLow: "Low risk",
+    body: "Full request",
+    extras: "Extra parameters",
+    extrasNote: "Extra parameters, marked in amber: check them before allowing.",
+    spoofed: "Letters from several alphabets are mixed: check the domain and file names.",
+    flagged: "Several lines or invisible characters: they are marked in amber.",
+    truncated: "Request too long to show in full: answer in the terminal.",
+    readToEnd: "Read the request to the end to be able to allow it.",
+    reason: (name, reason) => `Reason given by ${name}: ${reason}`,
+    deny: "Deny",
+    always: "Always for this command",
+    alwaysTip: "Only this command, word for word, in this folder, until the agent's session ends",
+    alwaysCodex: "Unavailable: Codex doesn't accept rules from îlot yet",
+    alwaysNever: "Unavailable: a compound command, one that runs the project's code, or one a rule can't target exactly",
+    allowed: "Allowed",
+    allow: "Allow",
+    askedNow: "Asked just now",
+    askedSeconds: (seconds) => `Asked ${seconds} s ago`,
+    askedMinutes: (minutes) => `Asked ${minutes} min ago`,
+    scope: (age, waiting) =>
+      `“Always” only covers this exact command, in this folder. ${age}${waiting > 0 ? `, ${waiting} more waiting` : ""}.`,
+  },
+  question: {
+    dialog: "Question from the agent",
+    body: "Full question",
+    other: "Other answer",
+    otherHint: "Other answer: write your own",
+    truncated: "Question too long to show in full: answer in the terminal.",
+    readToEnd: "Read the question to the end to be able to answer.",
+    several: "You can pick more than one.",
+    sent: "Sent",
+    send: "Send",
+    next: "Next",
+    scope: (seconds, name, waiting) =>
+      `No answer here within ${seconds} s and ${name} asks you in the terminal.${
+        waiting > 0 ? ` ${plural(waiting, "more request")} waiting.` : ""
+      }`,
+  },
+};

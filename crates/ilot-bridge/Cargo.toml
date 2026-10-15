@@ -1,0 +1,20 @@
+[package]
+name = "ilot-bridge"
+version = "0.1.0"
+description = "Protocol, identity and pipe client shared by îlot and its relays"
+edition = "2024"
+rust-version = "1.90"
+
+[dependencies]
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.152"
+windows = { version = "0.62.2", features = [
+    "Win32_Foundation",
+    # GetUserPreferredUILanguages: Windows' display languages, for « auto » (lang.rs).
+    "Win32_Globalization",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Pipes",
+    "Win32_System_Threading",
+] }

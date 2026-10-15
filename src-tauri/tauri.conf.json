@@ -1,0 +1,80 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "îlot",
+  "mainBinaryName": "ilot",
+  "version": "0.1.0",
+  "identifier": "io.github.hic-69.ilot",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "node scripts/prepare-relay.mjs debug && npm run dev",
+    "beforeBuildCommand": "node scripts/prepare-relay.mjs release && npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "îlot",
+        "width": 980,
+        "height": 720,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": false,
+        "maximizable": false,
+        "minimizable": false,
+        "shadow": false,
+        "focus": false,
+        "visible": false,
+        "focusable": false
+      },
+      {
+        "label": "buddy",
+        "title": "Mochi",
+        "url": "buddy.html",
+        "create": false,
+        "width": 96,
+        "height": 96,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": false,
+        "maximizable": false,
+        "minimizable": false,
+        "closable": false,
+        "shadow": false,
+        "focus": false,
+        "visible": false,
+        "focusable": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.ico"
+    ],
+    "externalBin": [
+      "binaries/ilot-hook",
+      "binaries/ilot-cli"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": [
+          "French"
+        ],
+        "installerHooks": "windows/hooks.nsh"
+      }
+    },
+    "shortDescription": "Une île en haut de l'écran pour tes agents IA, ta musique et tes messages."
+  }
+}

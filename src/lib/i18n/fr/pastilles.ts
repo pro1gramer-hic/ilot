@@ -1,0 +1,61 @@
+// pastilles: Réglages › Pastilles, the form that adds a service, and the hub's
+// « Pastilles » view (src/lib/i18n/i18n.svelte.ts).
+
+const s = (n: number): string => (n > 1 ? "s" : "");
+
+export const pastilles = {
+  reading: "Lecture en cours…",
+  retry: "Réessayer",
+  cancel: "Annuler",
+  add: "Ajouter une pastille",
+  tab: {
+    noTool: "Aucun",
+    intro: "De petits blocs d'état dans l'île, chacun avec son Mochi. Aucun n'est actif au départ : choisis ceux que tu veux. îlot ne fait que lire.",
+    tool: "Outil principal",
+    toolHint: "Le projet ouvert dans ton éditeur, et combien d'agents d'îlot y travaillent. Un clic sur la pastille ramène l'éditeur devant.",
+    extras: "En plus",
+    count: (n: number, max: number) => `${n} sur ${max}`,
+    remove: "Retirer",
+    removeName: (name: string) => `Retirer ${name}`,
+    noExtra: (max: number) => `Aucune pastille en plus. Ajoute-en jusqu'à ${max} ci-dessous.`,
+    full: "Quatre pastilles au plus : retire-en une pour en ajouter une autre.",
+    added: "Ajoutée",
+    local: "Sur ce PC, sans jeton",
+    fullRights: "Clé à pleins droits",
+    readToken: "Jeton en lecture",
+    foot: "Les jetons restent dans le Gestionnaire d'identification Windows. Ce que lisent les pastilles reste en mémoire, jamais sur le disque. Usage du forfait Claude et Codex : pas encore, ses sources officielles demandent de modifier la configuration des agents (voir le journal).",
+  },
+  tiles: {
+    label: "Pastilles",
+    tile: (name: string, line: string) => `${name} : ${line}`,
+  },
+  form: {
+    title: (service: string) => `Ajouter ${service}`,
+    pace: (minutes: number) => `lu toutes les ${minutes} min`,
+    rights: "Droits à donner :",
+    keepToken: "Déjà enregistré : laisse vide pour le garder",
+    pasteToken: "Colle le jeton ici",
+    instance: (required: boolean) => `Adresse de ton instance${required ? "" : " (facultatif)"}`,
+    createToken: "Créer le jeton :",
+    copied: "Lien copié",
+    copy: "Copier le lien",
+    submit: "Ajouter la pastille",
+    vault: "Le jeton va dans le Gestionnaire d'identification Windows, jamais dans un fichier.",
+  },
+  card: {
+    inMemory: "en mémoire",
+    checked: (ago: string) => `lu ${ago}`,
+    show: (name: string) => `Afficher ${name}`,
+    models: "Modèles",
+    chatWith: (model: string) => `Discuter avec ${model}`,
+    moreModels: (n: number) => `et ${n} autre${s(n)} installé${s(n)}`,
+    pullStep: (step: string, percent: number) => `${step}, ${percent} %`,
+    close: "Fermer",
+    pulling: (model: string) => `Téléchargement de ${model}`,
+    pullModel: "Modèle à télécharger",
+    download: "Télécharger",
+    downloadModel: "Télécharger un modèle",
+    start: (name: string) => `Lance ${name} : la pastille le verra d'elle-même.`,
+    startSpotify: "Lance un titre dans Spotify : il s'affichera ici.",
+  },
+};

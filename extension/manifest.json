@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "îlot · vidéo flottante",
+  "description": "Laisse îlot détacher l'épisode Crunchyroll dans le lecteur flottant du navigateur. Ne lit, ne copie ni n'envoie aucune image.",
+  "version": "1.0.0",
+  "minimum_chrome_version": "116",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr1t4kwDF0DJThxXFXJztH81ok+tcS1WfEysO+e521s1EkLIdMfinD16r2Rum0ei4S8kPqmeFMbBaZhOMeCCr1eOjNnQB809B9ZcFkPfys1icoXNabWc3v5jCDpK+idueAjGNtQuxwvfC4lIqvg/TAJyQEbf61EgzUzZlu/Wfkc5gNzJMtFmz44R73tA+ZdzNxRAB4jlla0etmDuNHJx83vGpeQ86GvJa3lIk8waqcuubzvr1fp1mAjSj+9RQc7YTqUan7Eme/kD6zJe47ukxg3L/gG+JR9gNaQCUaoc60bNhedP2NHEhIXO8yQs2sbaO1fwpadvA46eAszVSBPmSNwIDAQAB",
+  "permissions": ["nativeMessaging", "scripting", "alarms"],
+  "host_permissions": ["https://*.crunchyroll.com/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://*.crunchyroll.com/*"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "action": { "default_title": "Détacher la vidéo Crunchyroll" },
+  "commands": {
+    "detacher": {
+      "suggested_key": { "default": "Ctrl+Shift+8" },
+      "description": "Détacher la vidéo Crunchyroll",
+      "global": true
+    }
+  }
+}

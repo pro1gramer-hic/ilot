@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Identity package of îlot ("package with external location"). It holds no program:
+  once registered with Add-AppxPackage -ExternalLocation <folder of ilot.exe>, Windows
+  gives ilot.exe a package identity, which UserNotificationListener requires.
+  Identity Name, Publisher and Application Id must match the msix element of
+  src-tauri/windows-app-manifest.xml. Publisher must equal the subject of the signing
+  certificate (New-DevCertificate.ps1 in development).
+  https://learn.microsoft.com/windows/apps/desktop/modernize/grant-identity-to-nonpackaged-apps
+-->
+<Package IgnorableNamespaces="uap uap3 uap10 rescap"
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+  <Identity Name="io.github.hic-69.ilot" Publisher="CN=ilot-dev" Version="0.1.0.0" ProcessorArchitecture="neutral" />
+  <Properties>
+    <DisplayName>îlot</DisplayName>
+    <PublisherDisplayName>Hic-69</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <uap10:AllowExternalContent>true</uap10:AllowExternalContent>
+  </Properties>
+  <Resources>
+    <Resource Language="fr-fr" />
+  </Resources>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="unvirtualizedResources" />
+    <uap3:Capability Name="userNotificationListener" />
+  </Capabilities>
+  <Applications>
+    <Application Id="ilot" Executable="ilot.exe" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
+      <uap:VisualElements AppListEntry="none" DisplayName="îlot" Description="L'île en haut de l'écran" BackgroundColor="transparent" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" />
+    </Application>
+  </Applications>
+</Package>

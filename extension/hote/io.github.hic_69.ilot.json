@@ -1,0 +1,7 @@
+{
+  "name": "io.github.hic_69.ilot",
+  "description": "îlot : lien avec l'extension « îlot · vidéo flottante »",
+  "path": "ilot.exe",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://pgannnjdlbpfgibgpenliogidpinjokf/"]
+}

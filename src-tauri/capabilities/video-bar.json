@@ -1,0 +1,18 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "video-bar",
+  "description": "Commands bar laid over a small video player (îlot's local page): play-pause of its session, its own drag, back into the island, close. The video windows themselves (youtube, crunchyroll) have no capability at all.",
+  "windows": ["youtube-bar", "crunchyroll-bar"],
+  "permissions": [
+    "core:event:allow-listen",
+    "core:event:allow-unlisten",
+    "allow-get-settings",
+    "allow-get-media",
+    "allow-media-command",
+    "allow-video-state",
+    "allow-video-bar-move",
+    "allow-dock-video",
+    "allow-close-video",
+    "allow-buddy-home"
+  ]
+}

@@ -1,0 +1,92 @@
+[package]
+name = "ilot"
+version = "0.1.0"
+description = "îlot: an island at the top of the Windows screen"
+edition = "2024"
+rust-version = "1.90"
+
+[build-dependencies]
+tauri-build = { version = "2.7.2", features = [] }
+
+[dependencies]
+tauri = { version = "2.12.3", features = ["tray-icon"] }
+tauri-plugin-global-shortcut = "2.4.0"
+tauri-plugin-single-instance = "2.4.5"
+ilot-bridge = { path = "../crates/ilot-bridge" }
+serde = { version = "1.0.228", features = ["derive"] }
+# preserve_order keeps the key order of the agents' config files we edit.
+serde_json = { version = "1.0.152", features = ["preserve_order"] }
+tokio = { version = "1.47", features = ["io-util", "macros", "net", "rt", "rt-multi-thread", "sync", "time"] }
+base64 = "0.23.1"
+# The chat's requests to the provider the user picked, and the read-only calls of the
+# pastilles (local model servers, the services the user added), leave from the core, never
+# from the webview (its CSP keeps `connect-src` local). rustls, no OpenSSL to ship, and the
+# certificates of the Windows store (rustls-platform-verifier). `chunk()` reads streamed
+# answers, so the `stream` feature is not needed.
+reqwest = { version = "0.13.5", default-features = false, features = ["rustls", "json"] }
+# The island's webview asked for little memory at rest (memory.rs); the version Tauri's
+# own webview layer already uses.
+webview2-com = "0.39.1"
+windows = { version = "0.62.2", features = [
+    "ApplicationModel",
+    "Foundation",
+    "Foundation_Collections",
+    "Graphics_Imaging",
+    "Media_Control",
+    "Storage_Streams",
+    "UI_Notifications",
+    "UI_Notifications_Management",
+    "Win32_Foundation",
+    "Win32_Graphics_Dwm",
+    "Win32_Graphics_Gdi",
+    "Win32_Media_Audio",
+    "Win32_Media_Audio_Endpoints",
+    # The speech recognizer Windows already has, in process: dictation (dictation.rs) and
+    # « OK Mochi »'s command grammar (voice/listen.rs); and Windows' voices, in the language
+    # of the interface (voice/speak.rs).
+    "Win32_Media_Speech",
+    "Win32_Security",
+    # The vault: API keys in the Windows Credential Manager (vault.rs).
+    "Win32_Security_Credentials",
+    "Win32_Security_Cryptography",
+    # SECURITY_IDENTIFICATION and GetNamedPipeServerProcessId: the extension's relay
+    # (native_host.rs) opens îlot's pipe without lending its identity and checks who serves it.
+    # The app identity of a web app's window (on_top.rs: YouTube or Crunchyroll installed
+    # from Chrome).
+    "Win32_Storage_EnhancedStorage",
+    "Win32_Storage_FileSystem",
+    "Win32_Storage_Packaging_Appx",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_DataExchange",
+    # mapi32.dll, loaded on « Envoyer » only: Simple MAPI hands the draft to the mail app.
+    "Win32_System_LibraryLoader",
+    "Win32_System_Mapi",
+    "Win32_System_Memory",
+    # SPPHRASE (the rule and confidence of a recognition) is defined with OLE types.
+    "Win32_System_Ole",
+    "Win32_System_Pipes",
+    # The mail app registered for Simple MAPI, and where Outlook lives (mail.rs).
+    "Win32_System_Registry",
+    "Win32_System_Variant",
+    "Win32_System_Threading",
+    "Win32_UI_HiDpi",
+    # UI Automation: the tabs of the browser that sent a notification (WhatsApp Web), and
+    # the window Mochi is dropped on (window_context.rs).
+    "Win32_UI_Accessibility",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Shell",
+    # The « Enregistrer sous » dialog of the report image (COMDLG_FILTERSPEC).
+    "Win32_UI_Shell_Common",
+    "Win32_UI_Shell_PropertiesSystem",
+    "Win32_UI_WindowsAndMessaging",
+    # The question « OK Mochi » sends to Claude, through Windows' own HTTP client.
+    "Web_Http",
+    "Web_Http_Headers",
+] }
+
+[dev-dependencies]
+# Mock runtime: checks the real capabilities without opening windows.
+tauri = { version = "2.12.3", features = ["tray-icon", "test"] }
+# A Win32 tab control, read by UI Automation in the tests of notifications/uia.rs.
+windows = { version = "0.62.2", features = ["Win32_UI_Controls"] }

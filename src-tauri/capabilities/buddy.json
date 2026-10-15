@@ -1,0 +1,19 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "buddy",
+  "description": "Mochi's window outside the island: moves itself, asks where to go and where home is, is picked up and put down on the desktop, asks the island to open his wardrobe, offers the window it is dropped on (title and program only), closes itself, reads Mochi's settings. Nothing else.",
+  "windows": ["buddy"],
+  "permissions": [
+    "core:event:allow-listen",
+    "core:event:allow-unlisten",
+    "allow-get-settings",
+    "allow-buddy-move",
+    "allow-buddy-spots",
+    "allow-buddy-home",
+    "allow-buddy-hide",
+    "allow-buddy-grab",
+    "allow-buddy-settle",
+    "allow-open-wardrobe",
+    "allow-buddy-drop-window"
+  ]
+}

@@ -1,0 +1,15 @@
+[package]
+name = "ilot-cli"
+version = "0.1.0"
+description = "The ilot command: tells îlot what any tool is doing (ilot emit, ilot run)"
+edition = "2024"
+rust-version = "1.90"
+
+[dependencies]
+ilot-bridge = { path = "../ilot-bridge" }
+serde_json = "1.0.152"
+windows = { version = "0.62.2", features = ["Win32_System_Console"] }
+
+[dev-dependencies]
+# A fake îlot serving a test pipe.
+tokio = { version = "1.47", features = ["io-util", "net", "rt-multi-thread"] }

@@ -1,0 +1,78 @@
+// agents, in English: the same keys as ../fr/agents.ts.
+
+import type { Catalog } from "../fr";
+
+const s = (n: number): string => (n === 1 ? "" : "s");
+
+export const agents: Catalog["agents"] = {
+  generic: { name: "Other", tool: "Custom tool" },
+  status: {
+    active: "active",
+    waiting: "waiting for your OK",
+    paused: "paused",
+    done: "done",
+    failed: "failed",
+  },
+  subagents: (n) => `${n} subagent${s(n)}`,
+  subagentsOf: (count, kinds) => `${count}: ${kinds}`,
+  calm: "All quiet",
+  atWork: (n, detail) => `${n} agent${s(n)} at work · ${detail}`,
+  waitsOn: (name, project, inTerminal) => `${name} is waiting for your OK on ${project}${inTerminal ? ", in its terminal" : ""}`,
+  nobody: "Nobody's working",
+  worksOn: (name, project, first) => `${name} ${first ? "is working on" : "on"} ${project}`,
+  tickerWaiting: "waiting for your OK",
+  tickerWorking: (project) => `working on ${project}`,
+  verbs: {
+    run: "runs",
+    read: "reads",
+    edit: "edits",
+    write: "writes",
+    browse: "browses",
+    search: "searches",
+    fetch: "fetches",
+    delegate: "delegates",
+    plan: "plans",
+    ask: "asks",
+    use: "uses",
+    think: "thinks",
+    work: "works",
+  },
+  decisions: {
+    allow: "Allowed",
+    always: "Always allowed",
+    deny: "Denied",
+    suspended: "Denied (suspended)",
+    terminal: "Answered in the terminal",
+    expired: "Expired",
+  },
+  state: {
+    repair: "Needs repair",
+    absent: "Not installed",
+    off: "Disconnected",
+    suspended: "Suspended",
+    waiting: "Waiting for your OK",
+    working: "Working",
+    failed: "Failed",
+    done: "Done",
+    idle: "Idle",
+  },
+  mood: {
+    suspended: "Suspended",
+    waiting: "Waiting for your OK",
+    failed: "An agent failed",
+    fine: "All good",
+  },
+  hub: {
+    work: "working",
+    perm: "waiting for your OK",
+    err: "failed",
+    ok: "done",
+    play: "playing",
+    idle: "idle",
+  },
+  suspended: "Agents suspended",
+  working: (n) => `${n} agent${s(n)} at work`,
+  noneWorking: "No agent at work",
+  liveSteps: ["Read", "Edit", "Command", "Done"],
+  questionStep: (step, total) => `Question ${step} of ${total}`,
+};

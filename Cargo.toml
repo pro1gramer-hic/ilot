@@ -1,0 +1,3 @@
+[workspace]
+members = ["src-tauri", "crates/ilot-bridge", "crates/ilot-hook", "crates/ilot-cli"]
+resolver = "3"

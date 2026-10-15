@@ -1,0 +1,18 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "mini",
+  "description": "Mini-player window: media commands, its own drag and close, the theme. The YouTube window has no capability at all.",
+  "windows": ["mini"],
+  "permissions": [
+    "core:event:allow-listen",
+    "core:event:allow-unlisten",
+    "core:window:allow-set-position",
+    "core:window:allow-set-size",
+    "allow-get-settings",
+    "allow-get-media",
+    "allow-media-command",
+    "allow-open-media-source",
+    "allow-close-mini-player",
+    "allow-buddy-home"
+  ]
+}

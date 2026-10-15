@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Application manifest embedded in ilot.exe. The msix element ties the program to its
+     identity package (packaging/identity/AppxManifest.xml): publisher, packageName and
+     applicationId must match it exactly. While that package is not registered, ilot
+     runs as a plain desktop app, without identity.
+     https://learn.microsoft.com/windows/apps/desktop/modernize/grant-identity-to-nonpackaged-apps -->
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity version="0.1.0.0" name="ilot"/>
+  <msix xmlns="urn:schemas-microsoft-com:msix.v1"
+        publisher="CN=ilot-dev"
+        packageName="io.github.hic-69.ilot"
+        applicationId="ilot"/>
+  <!-- Kept from the default Tauri manifest: Common Controls v6. -->
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity
+        type="win32"
+        name="Microsoft.Windows.Common-Controls"
+        version="6.0.0.0"
+        processorArchitecture="*"
+        publicKeyToken="6595b64144ccf1df"
+        language="*"
+      />
+    </dependentAssembly>
+  </dependency>
+</assembly>
