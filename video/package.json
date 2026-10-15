@@ -1,0 +1,23 @@
+{
+  "name": "ilot-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "record": "node scripts/record.mjs",
+    "encode": "node scripts/encode.mjs",
+    "studio": "remotion studio",
+    "render": "remotion render IlotDemo ../media/ilot-demo.mp4 --browser-executable \"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\""
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.530",
+    "@remotion/google-fonts": "4.0.530",
+    "@remotion/media": "4.0.530",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.530"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "6.0.3"
+  }
+}

@@ -4,6 +4,8 @@ Une petite île posée sur ton écran Windows. Elle te montre ce que font tes ag
 
 ![îlot en action : Mochi salue, un agent termine, une permission, un message, la musique et une session en direct](media/ilot-apercu.gif)
 
+[Voir la vidéo de démo (54 s)](media/ilot-demo.mp4)
+
 ## Ce qu'elle fait
 
 - **Agents IA** : Claude Code, Gemini CLI, Codex, Copilot CLI, OpenCode et d'autres. Un point par IA, ce que chacune modifie (`+12 −3`), et une session en direct avec ses étapes et son diff.
